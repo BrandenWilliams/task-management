@@ -4,7 +4,7 @@ const Pool = require('pg').Pool
 const tasksPool = new Pool({
   user: 'admin',
   host: 'localhost',
-  database: 'tasks',
+  database: 'tasksDB',
   password: 'password',
   port: 5432,
 })
@@ -14,7 +14,7 @@ const createTask = (req, res) => {
 
   auth.authenticateToken(req, res)
 
-  tasksPool.query('INSERT INTO tasks (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
+  tasksPool.query('INSERT INTO tasks (account_ID, content) VALUES ($1, $2)', [account_ID, content], (error, results) => {
     if (error) {
       throw error
     }

@@ -5,7 +5,7 @@ const router = express.Router();
 const accountDB = require('../pools/accountPool.js')
 
 router.get('/:id', (req, res) => {
-    accountDB.getAccount(req, res);
+    accountDB.getAccountByID(req, res);
     return
 })
 
